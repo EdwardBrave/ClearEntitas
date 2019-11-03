@@ -1,0 +1,35 @@
+﻿using System.Collections.Generic;
+using Entitas;
+using Entitas.Unity;
+using UnityEngine;
+
+public sealed class AddViewSystem : ReactiveSystem<GameEntity>
+{
+    private GameContext _context;
+    public AddViewSystem(Contexts contexts): base(contexts.game)
+    {
+        _context = contexts.game;
+    }
+
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    {
+        return context.CreateCollector(GameMatcher.Sprite);
+    }
+
+    protected override bool Filter(GameEntity entity)
+    {
+        return entity.hasSprite && !entity.hasView;
+    }
+
+    protected override void Execute(List<GameEntity> entities)
+    {
+        foreach(var e in entities)
+        {
+            var obj = _context.globals.value.objects.Find(item => item.IsNamedAs(e.sprite.name));
+            GameObject gameObject = (obj?.prefub) ? Object.Instantiate(obj.prefub) : new GameObject("Sprite", typeof(SpriteRenderer));
+            e.AddView(gameObject);
+            gameObject.Link(e);
+        }
+    }
+
+}

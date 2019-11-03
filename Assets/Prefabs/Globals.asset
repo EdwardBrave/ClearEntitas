@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed6acb40c1b37c47bf909813d2b18ee, type: 3}
+  m_Name: Globals
+  m_EditorClassIdentifier: 
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  dividers:
+  - number: 3
+    color: {r: 1, g: 0.91764706, b: 0, a: 1}
+  - number: 5
+    color: {r: 0.4627451, g: 1, b: 0.011764706, a: 1}
+  - number: 2
+    color: {r: 1, g: 0.011764705, b: 0.9019126, a: 1}
+  objects:
+  - name: circle
+    prefub: {fileID: 7225395948504881331, guid: 018303e86cd4ffc4c98f123b078ca640,
+      type: 3}
